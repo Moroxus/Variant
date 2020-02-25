@@ -1,7 +1,6 @@
 #ifndef VARIANT_H
 #define VARIANT_H
 
-#include <iostream>
 #include <list>
 #include <map>
 #include <memory>
@@ -18,7 +17,7 @@ private:
     VariantOwner data;
 
 public:
-    Variant() { std::cerr << "Default constructor\n"; }
+    Variant() = default;
     Variant(int value): data(value) {}
     Variant(double value): data(value) {}
     Variant(const std::string& value): data(std::make_unique<std::string>(value)) {}
@@ -35,14 +34,10 @@ public:
                 break;
             default: break;
         }
-        std::cerr << "Copy constructor\n";
     }
 
-    Variant(Variant&& other) {
-        data = std::move(other.data);
-        std::cerr << "Move constructor\n";
-    }
-    ~Variant() { std::cerr << "Destructor\n"; }
+    Variant(Variant&& other) = default;
+    ~Variant()               = default;
 
     friend void swap(Variant& first, Variant& second) {
         using std::swap;

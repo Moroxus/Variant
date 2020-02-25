@@ -1,5 +1,7 @@
 #include "variant.h"
 
+#include <iostream>
+
 namespace mo = moroxus;
 
 int main() {
